@@ -1,0 +1,99 @@
+@import url(https://fonts.google.com/specimen/Outfit);
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
+
+// variables
+$clr-white:hsl(0, 0%, 100%);
+$bgclr: hsl(220, 15%, 55%);
+$font-fam: 'Outfit', sans-serif;
+$shadow-clr :hsl(212, 45%, 89%);
+$transition: all .5s ease-in-out;
+// end of variables
+
+@mixin flexbox($direction, $align){
+    display: flex;
+    align-items: center;
+    justify-content: $align;
+    flex-direction: $direction;
+}
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    background: $bgclr;
+    @include flexbox(column, center);
+    font-family: $font-fam;
+    box-shadow: 4px 4px 4px $shadow-clr, -4px -4px 4px $shadow-clr;
+}
+
+img{
+    width:clamp(80px, 250px, 300px );
+    height: clamp(80px, 250px, 300px);
+    transition: $transition;
+}
+.main-container{
+background: $clr-white;
+width: clamp(25vw, 45vw, 55vw);
+height: fit-content;
+border-radius: 10px;
+padding: 1rem;
+
+.mid-container{
+    @include flexbox(column, center);
+   transition: $transition;
+
+    img{
+        width: 100%;
+        height: clamp(120px,280px,300px);
+        border-radius: 10px;
+        transition: $transition;
+    }
+    .content{
+        padding: 0.76rem;
+        text-align: center;
+        transition: $transition;
+
+        h3{
+           padding: 1.5rem 0;
+           font-weight: 700;
+        }
+        p{
+            font-size:15px;
+        }
+    }
+    @media screen and (max-width:375px) {
+        .content{
+            padding: 0;
+        }
+        h3{
+            padding: 0;
+            font-size: .75rem;
+            font-weight:400;
+        }
+        p{
+            font-size: 5.5px;
+        }
+    }
+}
+}
+@media screen and (max-width:375px){
+    .main-container{
+        padding: .5rem;
+
+        .mid-container img{
+            height: 120px;
+        }
+    }
+}
+.attribution { 
+    width:100%;
+    padding: 10px;
+    box-shadow: -2px -2px 4px grey;
+    font-size: 11px; 
+    text-align: center; 
+
+    a { color: hsl(228, 45%, 44%); }
+}
